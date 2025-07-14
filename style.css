@@ -1,0 +1,22 @@
+h1{
+    color: green;
+    font-family: Cursive;
+}
+p{
+    color: Red; 
+    font-family: sans-serif;
+}
+ul{
+    list-style-image: url('Images/Pointer.png');
+}
+ol{
+    list-style-type: upper-roman;
+}
+#Menu-bar a{
+    text-decoration: none;
+    background-color: aquamarine;
+}
+#Menu-bar a:hover{
+    background-color: Red;
+    color: black;
+}
