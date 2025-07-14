@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <p id="outputText"></p>
+        <p id="OutputText"></p>
+
+        <Script>
+            var text1 = "40";
+            var text2 = "5";
+            var text3 = "20";
+            var text4 = "2";
+
+            var num1= stringToNumber(text1);
+            var num2= stringToNumber(text2);
+
+            if(isNaN(num1) || isNaN(num2)){
+                document.getElementById("outputText").innerHTML ="You have not entered an in valid number. Try again !";
+
+            } else{
+                document.getElementById("outputText").innerHTML = num1 / num2;
+
+            }
+
+            document.getElementById("OutputText").innerHTML = text3 - text4;
+
+
+            function stringToNumber (text){
+                return parseInt(text);
+            }
+        </Script>
+    </body>
+</html>
