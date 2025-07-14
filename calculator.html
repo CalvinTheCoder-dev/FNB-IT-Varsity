@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <td colspan="4">
+                    <input type="text" id="inputBox" value="0"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="digitButton" onclick="dgtBtnPressed(7)">7</td>
+                <td class="digitButton" onclick="dgtBtnPressed(8)">8</td>
+                <td class="digitButton" onclick="dgtBtnPressed(9)">9</td>
+                <td class="operationButton" onclick="operatorBtnPressed('*')">x</td>
+            </tr>
+            <tr>
+                <td class="digitButton" onclick="dgtBtnPressed(4)">4</td>
+                <td class="digitButton" onclick="dgtBtnPressed(5)">5</td>
+                <td class="digitButton" onclick="dgtBtnPressed(6)">6</td>
+                <td class="operationButton" onclick="operatorBtnPressed('-')">-</td>
+            </tr>
+            <tr>
+                <td class="digitButton" onclick="dgtBtnPressed(1)">1</td>
+                <td class="digitButton" onclick="dgtBtnPressed(2)">2</td>
+                <td class="digitButton" onclick="dgtBtnPressed(3)">3</td>
+                <td class="operationButton" onclick="operatorBtnPressed('+')">+</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="digitButton" onclick="dgtBtnPressed(0)">0</td>
+                <td class="ACButton"onclick="btnACPressed()">AC</td>
+                <td class="operationButton" onclick="operatorBtnPressed('/')">/</td>
+            </tr>
+            <tr>
+                <td class="functionButton" onclick="cosFunction()">cos</td>
+                <td class="functionButton" onclick="sinFunction()">sin</td>
+                <td class="functionButton" onclick="tanFunction()">tan</td>
+                <td class="functionButton" onclick="sqrtFunction()">√</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="functionButton" onclick="cubeRootFunction()">∛</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="operationButton" onclick="equalsBtnPressed()">=</td>
+  
+            </tr>
+
+        </table>
+
+        <script>
+            var newline = true; //Boolean variable. Determines if the next thing the user types should be on a new line.
+            var currentOperator;
+            //Event handler for when any digit button is pressed
+            function dgtBtnPressed(button){
+
+                if(newline){
+                    document.getElementById("inputBox").value = button;
+                    newline = false;
+                } else {
+                    var currentValue = document.getElementById("inputBox").value;
+                document.getElementById("inputBox").value = currentValue + button;
+                }
+
+            }
+
+            //Event handler for when AC button is pressed
+
+            function btnACPressed(){
+
+                document.getElementById("inputBox").value = 0;
+                newline = true;
+
+            }
+
+            //Event handler for operator buttons
+
+            function operatorBtnPressed(operator){
+                currentOperator = operator;
+                value1 = parseInt(document.getElementById("inputBox").value);
+                newline = true;
+            }
+
+             //Event handler for equals button
+
+            function equalsBtnPressed(){
+                var value2 = parseInt(document.getElementById("inputBox").value);
+                var finalTotal;
+
+                switch(currentOperator){
+                    case "+":
+                        finalTotal = value1 + value2;
+                        break;
+                    case "-":
+                        finalTotal = value1 - value2;
+                        break;
+                    case "/":
+                        finalTotal = value1 / value2;
+                        break;
+                    case "*":
+                        finalTotal = value1 * value2;
+                        break;
+                }
+                document.getElementById("inputBox").value = finalTotal
+            }
+
+            // Function for cosine
+            function cosFunction() {
+                var value = parseFloat(document.getElementById("inputBox").value);
+                document.getElementById("inputBox").value = Math.cos(value).toFixed(5); // Rounds to 5 decimal places
+                newline = true;
+            }
+
+            // Function for sine
+            function sinFunction() {
+                var value = parseFloat(document.getElementById("inputBox").value);
+                document.getElementById("inputBox").value = Math.sin(value).toFixed(5);
+                newline = true;
+            }
+
+            // Function for tangent
+            function tanFunction() {
+                var value = parseFloat(document.getElementById("inputBox").value);
+                document.getElementById("inputBox").value = Math.tan(value).toFixed(5);
+                newline = true;
+            }
+
+            // Function for square root
+            function sqrtFunction() {
+                var value = parseFloat(document.getElementById("inputBox").value);
+                document.getElementById("inputBox").value = Math.sqrt(value).toFixed(5);
+                newline = true;
+            }
+
+            // Function for cube root
+            function cubeRootFunction() {
+                var value = parseFloat(document.getElementById("inputBox").value);
+                document.getElementById("inputBox").value = Math.cbrt(value).toFixed(5);
+                newline = true;
+            }
+
+
+        </script>
+    </body>
